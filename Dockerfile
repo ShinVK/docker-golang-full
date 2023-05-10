@@ -5,11 +5,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN go mod init tidy
-
 RUN go build script.go
 
 FROM scratch
 WORKDIR /app
 COPY --from=builder /app/script .
 CMD ["./script"]
+
+# docker build -t victorshin/fullcycle .
